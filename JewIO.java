@@ -1,0 +1,70 @@
+
+import java.util.*;
+
+public class JewIO
+{
+	static Random rnd = new Random();
+	public static void main(String[] args) {
+		int[] nurx = new int[30];
+		int xmax = 300;
+		int a = 0;
+		int gen = 0;
+		for (int i = 0; i < nurx.length; i++) {
+			nurx[i] = rnd.nextInt(xmax - 1) + 1;
+		}
+		while(a == 0) {
+			System.out.println("this Gen: " + gen);
+			gen++;
+			for (int i = 0; i < nurx.length; i++) {
+				int mid = 0;
+				int minmid = 0;
+				while(nurx[i] != xmax) {
+
+					if (nurx[i] - xmax < xmax){
+						mid = nurx[i];
+					}
+
+					if (nurx[i] - xmax > xmax) {
+						minmid = nurx[i];
+					}
+
+					break;
+				}
+				if(mid != 0) {
+					if (mid - xmax < 100) {
+						nurx[i] = mid + 1;
+					}
+					
+					if (mid - xmax > 100) {
+						nurx[i] = mid - 1;
+					}
+					
+					if (mid - xmax > xmax) {
+						nurx[i] = mid - 10;
+					}
+					if (mid - xmax < xmax) {
+						nurx[i] = mid + 10;
+					}
+				}
+
+				if(minmid != 0) {
+					nurx[i] = minmid - 10;
+				}
+
+				if(nurx[i] == xmax) {
+					System.out.println("done.");
+					System.out.println(nurx[i] + " is " + xmax );
+					System.out.println("Final Gen: " + gen + " the Child: [" + i + "]");
+					a = 1;
+					break;
+				}
+				
+				//System.out.println(nurx[i] + " != " + mid +" != " + minmid + " to " + xmax +" gen: " + gen );
+			}
+			
+		}
+		
+	}
+
+
+}
