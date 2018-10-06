@@ -6,14 +6,14 @@ public class JewIO
 	static Random rnd = new Random();
 	public static void main(String[] args) {
 		int[] nurx = new int[30];
-		int xmax = 300;
+		int xmax = 500;
 		int a = 0;
 		int gen = 0;
 		for (int i = 0; i < nurx.length; i++) {
-			nurx[i] = rnd.nextInt(xmax - 1) + 1;
+			nurx[i] = rnd.nextInt(1000 - 1) +1;
 		}
 		while(a == 0) {
-			System.out.println("this Gen: " + gen);
+			System.out.println("the courent Gen: " + gen);
 			gen++;
 			for (int i = 0; i < nurx.length; i++) {
 				int mid = 0;
@@ -31,16 +31,8 @@ public class JewIO
 					break;
 				}
 				if(mid != 0) {
-					if (mid - xmax < 100) {
-						nurx[i] = mid + 1;
-					}
-					
-					if (mid - xmax > 100) {
-						nurx[i] = mid - 1;
-					}
-					
 					if (mid - xmax > xmax) {
-						nurx[i] = mid - 10;
+						nurx[i] = mid - 10 ;
 					}
 					if (mid - xmax < xmax) {
 						nurx[i] = mid + 10;
@@ -48,7 +40,7 @@ public class JewIO
 				}
 
 				if(minmid != 0) {
-					nurx[i] = minmid - 10;
+				//	nurx[i] = minmid - 1000;
 				}
 
 				if(nurx[i] == xmax) {
